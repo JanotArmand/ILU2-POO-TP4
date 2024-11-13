@@ -1,13 +1,16 @@
 package scenarioTest;
 
+import produit.Poisson;
+import produit.Sanglier;
 import villagegaulois.Etal;
+import villagegaulois.IEtal;
 
 public class ScenarioTest {
 
-	public static void acheterProduit(Etal[] marche, String produit, int quantiteSouhaitee) {
+	public static void acheterProduit(IEtal[] marche, String produit, int quantiteSouhaitee) {
 		int quantiteRestante = quantiteSouhaitee;
 		for (int i = 0; i < marche.length && quantiteRestante != 0; i++) {
-			Etal etal = marche[i];
+			IEtal etal = marche[i];
 			int quantiteDisponible = etal.contientProduit(produit, quantiteRestante);
 			if (quantiteDisponible != 0) {
 				int prix = etal.acheterProduit(quantiteDisponible);
@@ -31,7 +34,11 @@ public class ScenarioTest {
 	}
 
 	public static void main(String[] args) {
-
+		Etal<Sanglier>[] marche = new Etal[3];
+		Etal<Sanglier> etalSanglier = new Etal<>();
+		Etal<Poisson> etalPoisson = new Etal<>();
+		marche[0] = etalSanglier;
+		// marche[1] = etalPoisson;
 	}
 
 }
